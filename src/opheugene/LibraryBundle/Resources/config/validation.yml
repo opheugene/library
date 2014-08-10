@@ -1,0 +1,23 @@
+opheugene\LibraryBundle\Entity\Book:
+    properties:
+        name:
+            - NotBlank: ~
+        author:
+            - NotBlank: ~
+#       cover:
+#           - NotBlank: ~
+        coverPath:
+            - File:
+                maxSize: 2097152
+                mimeTypes: [image/jpeg, image/png]
+                mimeTypesMessage: Разрешены изображения в формате JPG и PNG
+#       file:
+#           - NotBlank: ~
+        filePath:
+            - File:
+                maxSize: 5242880
+                mimeTypes: [application/pdf, application/x-pdf]
+                mimeTypesMessage: Загрузите книгу в PDF
+        read:
+            - NotBlank: ~
+            - Type: \DateTime

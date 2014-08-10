@@ -1,0 +1,140 @@
+/* Library */
+.clear {
+	clear: both;
+}
+.books {
+	margin: 30px 0 0 0 !important;
+}
+.books .item {
+	margin: 20px 0;
+	padding: 10px;
+	loat: left;
+	clear: both;
+	background: #f5f5f5;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+}
+.books .item:nth-child(even) {
+	background: #f5f5f5;
+}
+.book-image {
+	float: left;
+	margin: 0 20px 0 0 !important;
+}
+.book-info, .book-form {
+	overflow: hidden;
+}
+.books .item .row {
+	padding: 5px;
+	border-bottom: 1px solid lightgray;
+}
+.books .item b {
+	display: inline-block;
+	width: 120px;
+}
+
+
+/* form */
+.book-form {}
+.form_row {
+	margin: 10px 0 0 0 !important;
+	position: relative;
+}
+.form_row label {
+	display: block;
+	float: left;
+	width: 200px;
+}
+.form_row ul {
+	position: absolute;
+	left: 520px;
+	color: red;
+	font-size: 13px;
+}
+.form_row input[type=text], .form_row input[type=password], .form_row input[type=email] {
+	width: 300px;
+	height: 20px;
+}
+.form_row .form_widget {
+	overflow: hidden;
+}
+.form_row .form_widget label {
+	float: none;
+	display: inline;
+	font-size: 12px;
+}
+.form_row .form_widget small {
+	color: gray;
+}
+
+.form-buttons {
+	margin: 30px 0 0 0 !important;
+	padding: 0 0 0 200px !important;
+}
+.form-buttons button, .form-buttons .button {
+	text-decoration:none; text-align:center; 
+	padding:8px 20px; 
+	border:solid 1px #004F72; 
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px; 
+	border-radius: 4px; 
+	font:14px Arial, Helvetica, sans-serif; 
+	font-weight:bold; 
+	color:#e5ffff; 
+	background-color:#3ba4c7; 
+	background-image: -moz-linear-gradient(top, #3ba4c7 0%, #1982a5 100%); 
+	background-image: -webkit-linear-gradient(top, #3ba4c7 0%, #1982a5 100%); 
+	background-image: -o-linear-gradient(top, #3ba4c7 0%, #1982a5 100%); 
+	background-image: -ms-linear-gradient(top, #3ba4c7 0% ,#1982a5 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1982a5', endColorstr='#1982a5',GradientType=0 ); 
+	background-image: linear-gradient(top, #3ba4c7 0% ,#1982a5 100%);   
+	-webkit-box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff; 
+	-moz-box-shadow: 0px 0px 2px #bababa,  inset 0px 0px 1px #ffffff;  
+	box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;  
+}
+.form-buttons button:hover, .form-buttons .button:hover {
+	padding:8px 20px; 
+	border:solid 1px #004F72; 
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px; 
+	border-radius: 4px; 
+	font:14px Arial, Helvetica, sans-serif; 
+	font-weight:bold; 
+	color:#E5FFFF; 
+	background-color:#47adcf; 
+	background-image: -moz-linear-gradient(top, #47adcf 0%, #2289ab 100%); 
+	background-image: -webkit-linear-gradient(top, #47adcf 0%, #2289ab 100%); 
+	background-image: -o-linear-gradient(top, #47adcf 0%, #2289ab 100%); 
+	background-image: -ms-linear-gradient(top, #47adcf 0% ,#2289ab 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2289ab', endColorstr='#2289ab',GradientType=0 ); 
+	background-image: linear-gradient(top, #47adcf 0% ,#2289ab 100%);   
+	-webkit-box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff; 
+	-moz-box-shadow: 0px 0px 2px #bababa,  inset 0px 0px 1px #ffffff;  
+	box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;  
+}
+.form-buttons button:active, .form-buttons .button:active {
+	padding:8px 20px; 
+	border:solid 1px #004F72; 
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px; 
+	border-radius: 4px; 
+	font:14px Arial, Helvetica, sans-serif; 
+	font-weight:bold; 
+	color:#d0f2f2; 
+	background-color:#3098ba; 
+	background-image: -moz-linear-gradient(top, #3098ba 0%, #157494 100%); 
+	background-image: -webkit-linear-gradient(top, #3098ba 0%, #157494 100%); 
+	background-image: -o-linear-gradient(top, #3098ba 0%, #157494 100%); 
+	background-image: -ms-linear-gradient(top, #3098ba 0% ,#157494 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#157494', endColorstr='#157494',GradientType=0 ); 
+	background-image: linear-gradient(top, #3098ba 0% ,#157494 100%);   
+	-webkit-box-shadow:0px 0px 2px #bababa, inset 0px 0px 5px #666666; 
+	-moz-box-shadow: 0px 0px 2px #bababa,  inset 0px 0px 5px #666666;  
+	box-shadow:0px 0px 2px #bababa, inset 0px 0px 5px #666666;  
+}
+
+
+/* Login/Registr form */

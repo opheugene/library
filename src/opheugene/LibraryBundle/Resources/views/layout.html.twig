@@ -1,0 +1,61 @@
+{% extends "TwigBundle::layout.html.twig" %}
+
+{% block head %}
+    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" />
+{% endblock %}
+
+{% block title 'Библиотека книг' %}
+
+{% block body %}
+	
+	{# flash messages #}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message">
+            <em>Notice</em>: {{ flashMessage }}
+        </div>
+    {% endfor %}
+	
+	{# auth #}
+	<ul id="auth-menu">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        	{% block menu %}
+        	<li>
+        		<a href="{{ path('fos_user_profile_show') }}">
+        			{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+        		</a>
+        	</li>
+	        <li>
+		        <a href="{{ path('fos_user_security_logout') }}">
+		            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+		        </a>
+		    </li>
+		    {% endblock %}
+	    {% else %}
+	        <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+	        <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
+	        <li><a href="{{ path('fos_user_resetting_request') }}">Забыли пароль?</a></li>
+	    {% endif %}
+	</ul>
+	
+	{# header #}
+    {% block content_header %}
+        <ul id="menu">
+            {% block content_header_more %}
+                <li><a href="{{ path('index') }}">Книги</a></li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                	<li><a href="{{ path('new') }}">Добавить</a></li>
+                {% endif %}
+            {% endblock %}
+        </ul>
+
+        <div style="clear: both"></div>
+    {% endblock %}
+	
+	{# content ------------------------------------------- #}
+    <div class="block">
+        {% block content %}{% endblock %}
+        <div class="clear"></div>
+    </div>
+	
+{% endblock %}

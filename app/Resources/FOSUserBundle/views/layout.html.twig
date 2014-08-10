@@ -1,0 +1,24 @@
+{% extends "opheugeneLibraryBundle::layout.html.twig" %}
+
+{% block menu %}
+	<li>
+		<a href="{{ path('fos_user_profile_edit') }}">
+			Изменить профайл
+		</a>
+	</li>
+	<li>
+		<a href="{{ path('fos_user_change_password') }}">
+			Сменить пароль
+		</a>
+	</li>
+    <li>
+        <a href="{{ path('fos_user_security_logout') }}">
+            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+	{% block fos_user_content %}
+    {% endblock fos_user_content %}
+{% endblock %}

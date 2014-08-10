@@ -1,0 +1,13 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% form_theme form 'opheugeneLibraryBundle:Form:fields.html.twig' %}
+
+<h1>Редактирование профиля</h1>
+
+<div class="books">
+	<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+	    {{ form_widget(form) }}
+	    <div class="form-buttons">
+	        <input class="button" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+	    </div>
+	</form>
+</div>
