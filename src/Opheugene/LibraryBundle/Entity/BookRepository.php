@@ -12,16 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class BookRepository extends EntityRepository
 {
-	public function findAllOrderedByReadDate()
+    public function findAllOrderedByReadDate()
     {
-    	$em = $this->getEntityManager();
-        
+        $em = $this->getEntityManager();
+
         $query = $em->createQueryBuilder('b')
-        		->select('b')
-        		->from('OpheugeneLibraryBundle:Book', 'b')
-				->orderBy('b.read', 'ASC')
-				->getQuery();
-		
-		return $query->useResultCache(true, 360, 'book_list')->getResult();
+                ->select('b')
+                ->from('OpheugeneLibraryBundle:Book', 'b')
+                ->orderBy('b.read', 'ASC')
+                ->getQuery();
+        
+        return $query->useResultCache(true, 360, 'book_list')->getResult();
     }
 }

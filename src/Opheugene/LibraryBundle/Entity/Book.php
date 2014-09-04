@@ -79,9 +79,9 @@ class Book
 
 
 
-	// ******************************************
-	// 			Getters and Setters
-	// ******************************************
+    // ******************************************
+    //          Getters and Setters
+    // ******************************************
 
     /**
      * Get id
@@ -187,11 +187,11 @@ class Book
     
     
     // ******************************************
-	// 				Files
-	// ******************************************
-	
-	// cover ====================================
-    
+    //                  Files
+    // ******************************************
+
+    // cover ====================================
+
     /**
      * Set cover
      *
@@ -201,7 +201,7 @@ class Book
     public function setCover($cover)
     {
         $this->cover = $cover;
-		
+
         return $this;
     }
 
@@ -239,28 +239,28 @@ class Book
     }
     
     public function uploadCover()
-	{
-	    // the file property can be empty if the field is not required
-	    if (null === $this->getCoverPath()) {
-	        return;
-	    }
-	    
-	    // delete old cover file
-	    $this->deleteCover();
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getCoverPath()) {
+            return;
+        }
 
-	    $subdir = date("ymd");
-	    $filename = uniqid().".".$this->getCoverPath()->guessExtension();
-	    $this->getCoverPath()->move($this->getUploadRootDir().'/cover/'.$subdir, $filename);
-	
-	    // set the path property to the filename where you've saved the file
-	    $this->cover = $subdir."/".$filename;
-	
-	    // clean up the file property as you won't need it anymore
-	    $this->coverPath = null;
-	}
-    
-	// file ===================================
-	
+        // delete old cover file
+        $this->deleteCover();
+
+        $subdir = date("ymd");
+        $filename = uniqid().".".$this->getCoverPath()->guessExtension();
+        $this->getCoverPath()->move($this->getUploadRootDir().'/cover/'.$subdir, $filename);
+
+        // set the path property to the filename where you've saved the file
+        $this->cover = $subdir."/".$filename;
+
+        // clean up the file property as you won't need it anymore
+        $this->coverPath = null;
+    }
+
+    // file ===================================
+
     /**
      * Set file
      *
@@ -286,7 +286,7 @@ class Book
     }
     
     // form input for file ---------------------
-    
+
     /**
      * Sets filePath.
      *
@@ -306,31 +306,31 @@ class Book
     {
         return $this->filePath;
     }
-    
+
     public function uploadFile()
-	{
-	    // the file property can be empty if the field is not required
-	    if (null === $this->getFilePath()) {
-	        return;
-	    }
-	    
-	    // delete old book file
-	    $this->deleteFile();
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFilePath()) {
+            return;
+        }
 
-	    $subdir = date("ymd");
-	    $filename = uniqid().".".$this->getFilePath()->guessExtension();
-	    $this->getFilePath()->move($this->getUploadRootDir().'/book/'.$subdir, $filename);
-	
-	    // set the path property to the filename where you've saved the file
-	    $this->file = $subdir."/".$filename;
-	
-	    // clean up the file property as you won't need it anymore
-	    $this->filePath = null;
-	}
-    
-    
+        // delete old book file
+        $this->deleteFile();
+
+        $subdir = date("ymd");
+        $filename = uniqid().".".$this->getFilePath()->guessExtension();
+        $this->getFilePath()->move($this->getUploadRootDir().'/book/'.$subdir, $filename);
+
+        // set the path property to the filename where you've saved the file
+        $this->file = $subdir."/".$filename;
+
+        // clean up the file property as you won't need it anymore
+        $this->filePath = null;
+    }
+
+
     // global upload methods -------------------
-
+    
     protected function getUploadRootDir()
     {
         return $_SERVER["DOCUMENT_ROOT"].$this->getUploadDir();
@@ -345,57 +345,59 @@ class Book
     
     // delete
     public function deleteCover () {
-    	$tmp = $this->getCover();
-    	if ($this->getCover() && is_readable ($this->getUploadRootDir().'/cover/'.$this->cover)) {
-	    	unlink ($_SERVER["DOCUMENT_ROOT"] . $tmp);
-	    	$this->checkEmptyDir($tmp);
-	    	
-    	}
-    	$this->setCover(false);
+        $tmp = $this->getCover();
+        if ($this->getCover() && is_readable ($this->getUploadRootDir().'/cover/'.$this->cover)) {
+            unlink ($_SERVER["DOCUMENT_ROOT"] . $tmp);
+            $this->checkEmptyDir($tmp);
+        }
+        $this->setCover(false);
     }
-    
+
     public function deleteFile () {
-    	$tmp = $this->getFile();
-    	if ($this->getFile() && is_readable ($this->getUploadRootDir().'/book/'.$this->file)) {
-        	unlink ($_SERVER["DOCUMENT_ROOT"] . $tmp);
-        	$this->checkEmptyDir($tmp);
-		}
-		$this->setFile(false);
+        $tmp = $this->getFile();
+        if ($this->getFile() && is_readable ($this->getUploadRootDir().'/book/'.$this->file)) {
+            unlink ($_SERVER["DOCUMENT_ROOT"] . $tmp);
+            $this->checkEmptyDir($tmp);
+        }
+        $this->setFile(false);
     }
-    
+
     public function deleteUploadedFiles () {
-    	$tmpCover = $this->getCover();
-    	if ($this->getCover() && is_readable ($this->getUploadRootDir().'/cover/'.$this->cover)) {
-	    	unlink ($_SERVER["DOCUMENT_ROOT"] . $tmpCover);
-	    	$this->checkEmptyDir($tmpCover);
-    	}
-    	$tmpFile = $this->getFile();
-	    if ($this->getFile() && is_readable ($this->getUploadRootDir().'/book/'.$this->file)) {
-        	unlink ($_SERVER["DOCUMENT_ROOT"] . $tmpFile);
-			$this->checkEmptyDir($tmpFile);
-		}
+        $tmpCover = $this->getCover();
+        if ($this->getCover() && is_readable ($this->getUploadRootDir().'/cover/'.$this->cover)) {
+            unlink ($_SERVER["DOCUMENT_ROOT"] . $tmpCover);
+            $this->checkEmptyDir($tmpCover);
+        }
+        $tmpFile = $this->getFile();
+        if ($this->getFile() && is_readable ($this->getUploadRootDir().'/book/'.$this->file)) {
+            unlink ($_SERVER["DOCUMENT_ROOT"] . $tmpFile);
+            $this->checkEmptyDir($tmpFile);
+        }
     }
     
     
     
     // check is dir empty
-    public function checkEmptyDir ($filePath) {
-    	if ($filePath) {
-	    	
-	    	// get dir
-	    	$arPathInfo = pathinfo($_SERVER["DOCUMENT_ROOT"] . $filePath);
-	    	$dir = $arPathInfo["dirname"];
-	    	
-	    	// check files
-	    	if (!is_readable($dir)) return;
-	    	$handle = opendir($dir);
-	    	while (false !== ($entry = readdir($handle))) {
-				if ($entry != "." && $entry != "..") return;
-			}
+    public function checkEmptyDir ($filePath)
+    {
+        if ($filePath) {
 
-			// delete dir
-			rmdir($dir);
-    	}
+            // get dir
+            $arPathInfo = pathinfo($_SERVER["DOCUMENT_ROOT"] . $filePath);
+            $dir = $arPathInfo["dirname"];
+
+            // check files
+            if (!is_readable($dir)) {
+                return;
+            }
+            $handle = opendir($dir);
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry != "." && $entry != "..") return;
+            }
+
+            // delete dir
+            rmdir($dir);
+        }
     }
     
 }
