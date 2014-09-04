@@ -30,7 +30,7 @@ twig:
     strict_variables: "%kernel.debug%"
 #    form:
 #        resources:
-#            - 'opheugeneLibraryBundle:Form:fields.html.twig'
+#            - 'OpheugeneLibraryBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -73,7 +73,7 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: opheugene\LibraryBundle\Entity\User
+    user_class: Opheugene\LibraryBundle\Entity\User
 
 # Gregwar/ImageBundle
 gregwar_image: ~

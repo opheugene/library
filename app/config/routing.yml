@@ -1,5 +1,5 @@
-opheugene_library:
-    resource: "@opheugeneLibraryBundle/Resources/config/routing.yml"
+Opheugene_library:
+    resource: "@OpheugeneLibraryBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user_security:

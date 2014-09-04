@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Gregwar\ImageBundle\GregwarImageBundle(),
-            new opheugene\LibraryBundle\opheugeneLibraryBundle(),
+            new Opheugene\LibraryBundle\OpheugeneLibraryBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
