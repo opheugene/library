@@ -5,7 +5,6 @@ namespace Opheugene\LibraryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Opheugene\LibraryBundle\Entity\Book;
 use Opheugene\LibraryBundle\Form\Type\BookType;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -13,7 +12,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $repository = $this->getDoctrine()->getRepository("OpheugeneLibraryBundle:Book");
-        
+
         //$books = $repository->findBy(array(), array("read" => "ASC"));
         $books = $repository->findAllOrderedByReadDate();
 
@@ -73,9 +72,9 @@ class DefaultController extends Controller
         $form = $this->createForm(new BookType(), $book);
 
         // delete?
-        $form->add("delete_cover", 	($hasCover ? "checkbox" : "hidden"), 	array("label"  => "Удалить", 		"mapped" => false));
-        $form->add("delete_file", 	($hasFile ? "checkbox" : "hidden"), 	array("label"  => "Удалить", 		"mapped" => false));
-        $form->add("delete", 		"checkbox", 							array("label"  => "Удалить книгу", 	"mapped" => false));
+        $form->add("delete_cover", ($hasCover ? "checkbox" : "hidden"), array("label" => "Удалить", "mapped" => false));
+        $form->add("delete_file", ($hasFile ? "checkbox" : "hidden"), array("label" => "Удалить", "mapped" => false));
+        $form->add("delete", "checkbox", array("label" => "Удалить книгу",  "mapped" => false));
 
         // request
         $form->handleRequest($request);

@@ -9,7 +9,7 @@ new:
 update:
     path:     /book/{id}
     defaults: { _controller: OpheugeneLibraryBundle:Default:update }
-    
+
 hello:
     path:     /hello/{name}
     defaults: { _controller: OpheugeneLibraryBundle:Default:hello }

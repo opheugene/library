@@ -4,14 +4,14 @@
 
 {% block content %}
     <h1>Библиотека книг</h1>
-    
+
     <div class="books">
     	{% for book in books %}
     		<div class="item">
-    			
+
     			{# image #}
     			<div class="book-image"><img src="{{ book.cover|showImage(200) }}" alt="{{ book.name }}" /></div>
-    			
+
     			{# info #}
     			<div class="book-info">
 	    			<div class="row"><b>Название</b> 	{{ book.name }}</div>
@@ -20,7 +20,7 @@
 	    			{% if book.download == true and book.file %}
 						<div class="row"><b>&nbsp;</b> <a href="{{ book.file }}" title="Скачать" target="_blank">Скачать</a></div>
 					{% endif %}
-					
+
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 						<div class="row"><b>&nbsp;</b> <a href="{{ path('update', {'id': book.id}) }}">Редактировать</a></div>
 					{% endif %}
@@ -29,5 +29,5 @@
     		</div>
 		{% endfor %}
     </div>
-    
+
 {% endblock %}

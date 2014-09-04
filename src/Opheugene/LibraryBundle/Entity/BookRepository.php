@@ -21,7 +21,7 @@ class BookRepository extends EntityRepository
                 ->from('OpheugeneLibraryBundle:Book', 'b')
                 ->orderBy('b.read', 'ASC')
                 ->getQuery();
-        
+
         return $query->useResultCache(true, 360, 'book_list')->getResult();
     }
 }

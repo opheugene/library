@@ -12,16 +12,18 @@ class OpheugeneExtension extends \Twig_Extension
         );
     }
 
-    public function showImage ($path, $width = 160, $height = null)
+    public function showImage($path, $width = 160, $height = null)
     {
-    	if (strlen ($path) && is_readable ($_SERVER["DOCUMENT_ROOT"] . $path)) {
-	    	
-	    	// generating preview
-	    	$src = "/".Image::open($_SERVER["DOCUMENT_ROOT"] . $path)
-			    ->cropResize($width, $height)
-			    ->jpeg();
-	    	
-    	} else $src = "/bundles/Opheugenelibrary/images/no-photo.jpg";
+        if (strlen($path) && is_readable($_SERVER["DOCUMENT_ROOT"] . $path)) {
+
+            // generating preview
+            $src = "/".Image::open($_SERVER["DOCUMENT_ROOT"] . $path)
+                ->cropResize($width, $height)
+                ->jpeg();
+
+        } else {
+            $src = "/bundles/Opheugenelibrary/images/no-photo.jpg";
+        }
 
         return $src;
     }
@@ -31,5 +33,3 @@ class OpheugeneExtension extends \Twig_Extension
         return 'opheugene_extension';
     }
 }
-
-?>

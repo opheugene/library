@@ -43,7 +43,7 @@ class Book
      * @ORM\Column(name="cover", type="text")
      */
     private $cover;
-    
+
     /**
      * @Assert\File(maxSize="6000000")
      */
@@ -55,7 +55,7 @@ class Book
      * @ORM\Column(name="file", type="text")
      */
     private $file;
-    
+
     /**
      * @Assert\File(maxSize="6000000")
      */
@@ -75,10 +75,6 @@ class Book
      */
     private $download;
 
-
-
-
-
     // ******************************************
     //          Getters and Setters
     // ******************************************
@@ -86,7 +82,7 @@ class Book
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -96,7 +92,7 @@ class Book
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Book
      */
     public function setName($name)
@@ -109,7 +105,7 @@ class Book
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -119,7 +115,7 @@ class Book
     /**
      * Set author
      *
-     * @param string $author
+     * @param  string $author
      * @return Book
      */
     public function setAuthor($author)
@@ -132,7 +128,7 @@ class Book
     /**
      * Get author
      *
-     * @return string 
+     * @return string
      */
     public function getAuthor()
     {
@@ -142,7 +138,7 @@ class Book
     /**
      * Set read
      *
-     * @param \DateTime $read
+     * @param  \DateTime $read
      * @return Book
      */
     public function setRead($read)
@@ -155,7 +151,7 @@ class Book
     /**
      * Get read
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRead()
     {
@@ -165,7 +161,7 @@ class Book
     /**
      * Set download
      *
-     * @param boolean $download
+     * @param  boolean $download
      * @return Book
      */
     public function setDownload($download)
@@ -178,14 +174,13 @@ class Book
     /**
      * Get download
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDownload()
     {
         return $this->download;
     }
-    
-    
+
     // ******************************************
     //                  Files
     // ******************************************
@@ -195,7 +190,7 @@ class Book
     /**
      * Set cover
      *
-     * @param string $cover
+     * @param  string $cover
      * @return Book
      */
     public function setCover($cover)
@@ -212,12 +207,12 @@ class Book
      */
     public function getCover()
     {
-        return strlen ($this->cover) && is_readable ($this->getUploadRootDir().'/cover/'.$this->cover) 
-        	? $this->getUploadDir().'/cover/'.$this->cover : '';
+        return strlen($this->cover) && is_readable($this->getUploadRootDir().'/cover/'.$this->cover)
+            ? $this->getUploadDir().'/cover/'.$this->cover : '';
     }
-    
+
     // form input for cover ---------------------
-    
+
     /**
      * Sets coverPath.
      *
@@ -237,7 +232,7 @@ class Book
     {
         return $this->coverPath;
     }
-    
+
     public function uploadCover()
     {
         // the file property can be empty if the field is not required
@@ -264,7 +259,7 @@ class Book
     /**
      * Set file
      *
-     * @param string $file
+     * @param  string $file
      * @return Book
      */
     public function setFile($file)
@@ -277,14 +272,14 @@ class Book
     /**
      * Get file
      *
-     * @return string 
+     * @return string
      */
     public function getFile()
     {
-        return strlen ($this->file)  && is_readable ($this->getUploadRootDir().'/book/'.$this->file)
+        return strlen($this->file)  && is_readable($this->getUploadRootDir().'/book/'.$this->file)
         ? $this->getUploadDir().'/book/'.$this->file : '';
     }
-    
+
     // form input for file ---------------------
 
     /**
@@ -328,9 +323,8 @@ class Book
         $this->filePath = null;
     }
 
-
     // global upload methods -------------------
-    
+
     protected function getUploadRootDir()
     {
         return $_SERVER["DOCUMENT_ROOT"].$this->getUploadDir();
@@ -340,45 +334,44 @@ class Book
     {
         return '/upload';
     }
-    
-    
-    
+
     // delete
-    public function deleteCover () {
+    public function deleteCover()
+    {
         $tmp = $this->getCover();
-        if ($this->getCover() && is_readable ($this->getUploadRootDir().'/cover/'.$this->cover)) {
-            unlink ($_SERVER["DOCUMENT_ROOT"] . $tmp);
+        if ($this->getCover() && is_readable($this->getUploadRootDir().'/cover/'.$this->cover)) {
+            unlink($_SERVER["DOCUMENT_ROOT"] . $tmp);
             $this->checkEmptyDir($tmp);
         }
         $this->setCover(false);
     }
 
-    public function deleteFile () {
+    public function deleteFile()
+    {
         $tmp = $this->getFile();
-        if ($this->getFile() && is_readable ($this->getUploadRootDir().'/book/'.$this->file)) {
-            unlink ($_SERVER["DOCUMENT_ROOT"] . $tmp);
+        if ($this->getFile() && is_readable($this->getUploadRootDir().'/book/'.$this->file)) {
+            unlink($_SERVER["DOCUMENT_ROOT"] . $tmp);
             $this->checkEmptyDir($tmp);
         }
         $this->setFile(false);
     }
 
-    public function deleteUploadedFiles () {
+    public function deleteUploadedFiles()
+    {
         $tmpCover = $this->getCover();
-        if ($this->getCover() && is_readable ($this->getUploadRootDir().'/cover/'.$this->cover)) {
-            unlink ($_SERVER["DOCUMENT_ROOT"] . $tmpCover);
+        if ($this->getCover() && is_readable($this->getUploadRootDir().'/cover/'.$this->cover)) {
+            unlink($_SERVER["DOCUMENT_ROOT"] . $tmpCover);
             $this->checkEmptyDir($tmpCover);
         }
         $tmpFile = $this->getFile();
-        if ($this->getFile() && is_readable ($this->getUploadRootDir().'/book/'.$this->file)) {
-            unlink ($_SERVER["DOCUMENT_ROOT"] . $tmpFile);
+        if ($this->getFile() && is_readable($this->getUploadRootDir().'/book/'.$this->file)) {
+            unlink($_SERVER["DOCUMENT_ROOT"] . $tmpFile);
             $this->checkEmptyDir($tmpFile);
         }
     }
-    
-    
-    
+
     // check is dir empty
-    public function checkEmptyDir ($filePath)
+    public function checkEmptyDir($filePath)
     {
         if ($filePath) {
 
@@ -392,12 +385,13 @@ class Book
             }
             $handle = opendir($dir);
             while (false !== ($entry = readdir($handle))) {
-                if ($entry != "." && $entry != "..") return;
+                if ($entry != "." && $entry != "..") {
+                    return;
+                }
             }
 
             // delete dir
             rmdir($dir);
         }
     }
-    
 }

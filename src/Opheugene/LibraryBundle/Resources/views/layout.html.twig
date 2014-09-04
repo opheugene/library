@@ -8,14 +8,14 @@
 {% block title 'Библиотека книг' %}
 
 {% block body %}
-	
+
 	{# flash messages #}
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="flash-message">
             <em>Notice</em>: {{ flashMessage }}
         </div>
     {% endfor %}
-	
+
 	{# auth #}
 	<ul id="auth-menu">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -37,7 +37,7 @@
 	        <li><a href="{{ path('fos_user_resetting_request') }}">Забыли пароль?</a></li>
 	    {% endif %}
 	</ul>
-	
+
 	{# header #}
     {% block content_header %}
         <ul id="menu">
@@ -51,11 +51,11 @@
 
         <div style="clear: both"></div>
     {% endblock %}
-	
+
 	{# content ------------------------------------------- #}
     <div class="block">
         {% block content %}{% endblock %}
         <div class="clear"></div>
     </div>
-	
+
 {% endblock %}

@@ -5,17 +5,17 @@
 
 {% block content %}
     <h1>Редактирование книги {{ book.name }}!</h1>
-    
+
     <div class="books">
 	    <div class="book-image"><img src="{{ book.cover|showImage }}" alt="{{ book.name }}" /></div>
-	    
+
 	    <div class="book-form">
 		    {{ form_start(form, {'attr': {'class': 'book-form', 'novalidate': 'novalidate'}}) }}
 			    {{ form_errors(form) }}
-			
+
 			    {{ form_row(form.name) }}
 			    {{ form_row(form.author) }}
-				
+
 				{# cover #}
 			    <div class="form_row">
 			        {{ form_label(form.coverPath) }}
@@ -30,7 +30,7 @@
 						{% endif %}
 			        </div>
 			    </div>
-				
+
 				{# file #}
 			    <div class="form_row">
 			        {{ form_label(form.filePath) }}
@@ -45,13 +45,13 @@
 						{% endif %}
 			        </div>
 			    </div>
-			    
+
 			    {{ form_row(form.read) }}
 			    {{ form_row(form.download) }}
-			    
+
 			    {{ form_row(form.delete) }}
 			{{ form_end(form) }}
 		</div>
 	</div>
-    
+
 {% endblock %}

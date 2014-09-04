@@ -15,16 +15,14 @@ class DeleteBookSubscriber implements EventSubscriber
         );
     }
 
-    public function postRemove (LifecycleEventArgs $args)
+    public function postRemove(LifecycleEventArgs $args)
     {
-    	$entity = $args->getEntity();
+        $entity = $args->getEntity();
         $entityManager = $args->getEntityManager();
-        
+
         // delete files
-        if ($entity instanceof Book)
+        if ($entity instanceof Book) {
             $entity->deleteUploadedFiles();
+        }
     }
-
 }
-
-?>
