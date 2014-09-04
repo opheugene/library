@@ -11,14 +11,25 @@ class BookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("name", null, array("label"  => "Название"))
-            ->add("author", null, array("label"  => "Автор"))
-            //->add("cover", "file", array("label"  => "Обложка", "data_class" => null))
-            ->add("coverPath", null, array("label"  => "Обложка"))
-            //->add("file", "text", array("label"  => "Файл"))
-            ->add("filePath", null, array("label"  => "Файл"))
+            ->add("name", null, array("label" => "Название"))
+            ->add("author", null, array("label" => "Автор"))
+            //->add("cover", "file", array("label" => "Обложка", "data_class" => null))
+            ->add("coverPath", null, array("label" => "Обложка"))
+            ->add(
+                "delete_cover",
+                $options["attr"]["has_cover"] ? "checkbox" : "hidden",
+                array("label" => "Удалить", "mapped" => false)
+            )
+            //->add("file", "text", array("label" => "Файл"))
+            ->add("filePath", null, array("label" => "Файл"))
+            ->add(
+                "delete_file",
+                $options["attr"]["has_file"] ? "checkbox" : "hidden",
+                array("label" => "Удалить", "mapped" => false)
+            )
             ->add("read", null, array('widget' => 'single_text', "label"  => "Дата прочтения"))
-            ->add("download", null, array("label"  => "Разрешить скачивание"))
+            ->add("download", null, array("label" => "Разрешить скачивание"))
+            ->add("delete", "checkbox", array("label" => "Удалить книгу", "mapped" => false))
             ->add("Сохранить", "submit");
     }
 

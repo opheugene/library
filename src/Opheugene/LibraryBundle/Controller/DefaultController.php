@@ -65,16 +65,14 @@ class DefaultController extends Controller
                 'No book found for id '.$id
             );
         }
-        $hasCover = strlen($book->getCover()) > 0;
-        $hasFile = strlen($book->getFile()) > 0;
 
         // create form
-        $form = $this->createForm(new BookType(), $book);
-
-        // delete?
-        $form->add("delete_cover", ($hasCover ? "checkbox" : "hidden"), array("label" => "Удалить", "mapped" => false));
-        $form->add("delete_file", ($hasFile ? "checkbox" : "hidden"), array("label" => "Удалить", "mapped" => false));
-        $form->add("delete", "checkbox", array("label" => "Удалить книгу",  "mapped" => false));
+        $form = $this->createForm(new BookType(), $book, array(
+            "attr" => array(
+                "has_cover" => strlen($book->getCover()) > 0,
+                "has_file" => strlen($book->getFile()) > 0
+            )
+        ));
 
         // request
         $form->handleRequest($request);

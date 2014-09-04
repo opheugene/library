@@ -9,3 +9,5 @@
 /bin/
 /composer.phar
 /php-cs-fixer
+/web/cache
+/web/upload
