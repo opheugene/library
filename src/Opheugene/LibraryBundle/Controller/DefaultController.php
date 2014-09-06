@@ -16,6 +16,7 @@ class DefaultController extends Controller
         //$books = $repository->findBy(array(), array("read" => "ASC"));
         $books = $repository->findAllOrderedByReadDate();
 
+        //echo $this->container->getParameter("document_root");
         return $this->render('OpheugeneLibraryBundle:Default:index.html.twig', array("books" => $books));
     }
 

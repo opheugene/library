@@ -11,3 +11,4 @@
 /php-cs-fixer
 /web/cache
 /web/upload
+/web/adminer.php

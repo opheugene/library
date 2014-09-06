@@ -243,7 +243,7 @@ class Book
         // delete old cover file
         $this->deleteCover();
 
-        $subdir = date("ymd");
+        $subdir = rand(0, 9);
         $filename = uniqid().".".$this->getCoverPath()->guessExtension();
         $this->getCoverPath()->move($this->getUploadRootDir().'/cover/'.$subdir, $filename);
 
@@ -312,7 +312,7 @@ class Book
         // delete old book file
         $this->deleteFile();
 
-        $subdir = date("ymd");
+        $subdir = rand(0, 9);
         $filename = uniqid().".".$this->getFilePath()->guessExtension();
         $this->getFilePath()->move($this->getUploadRootDir().'/book/'.$subdir, $filename);
 
@@ -325,9 +325,14 @@ class Book
 
     // global upload methods -------------------
 
+    protected function getRootDir()
+    {
+        return __DIR__."/../../../../web";
+    }
+
     protected function getUploadRootDir()
     {
-        return $_SERVER["DOCUMENT_ROOT"].$this->getUploadDir();
+        return $this->getRootDir().$this->getUploadDir();
     }
 
     protected function getUploadDir()
@@ -340,7 +345,7 @@ class Book
     {
         $tmp = $this->getCover();
         if ($this->getCover() && is_readable($this->getUploadRootDir().'/cover/'.$this->cover)) {
-            unlink($_SERVER["DOCUMENT_ROOT"] . $tmp);
+            unlink($this->getRootDir().$tmp);
             $this->checkEmptyDir($tmp);
         }
         $this->setCover(false);
@@ -350,7 +355,7 @@ class Book
     {
         $tmp = $this->getFile();
         if ($this->getFile() && is_readable($this->getUploadRootDir().'/book/'.$this->file)) {
-            unlink($_SERVER["DOCUMENT_ROOT"] . $tmp);
+            unlink($this->getRootDir().$tmp);
             $this->checkEmptyDir($tmp);
         }
         $this->setFile(false);
@@ -360,12 +365,12 @@ class Book
     {
         $tmpCover = $this->getCover();
         if ($this->getCover() && is_readable($this->getUploadRootDir().'/cover/'.$this->cover)) {
-            unlink($_SERVER["DOCUMENT_ROOT"] . $tmpCover);
+            unlink($this->getRootDir().$tmpCover);
             $this->checkEmptyDir($tmpCover);
         }
         $tmpFile = $this->getFile();
         if ($this->getFile() && is_readable($this->getUploadRootDir().'/book/'.$this->file)) {
-            unlink($_SERVER["DOCUMENT_ROOT"] . $tmpFile);
+            unlink($this->getRootDir().$tmpFile);
             $this->checkEmptyDir($tmpFile);
         }
     }
@@ -376,7 +381,7 @@ class Book
         if ($filePath) {
 
             // get dir
-            $arPathInfo = pathinfo($_SERVER["DOCUMENT_ROOT"] . $filePath);
+            $arPathInfo = pathinfo($this->getRootDir().$filePath);
             $dir = $arPathInfo["dirname"];
 
             // check files
