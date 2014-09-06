@@ -330,7 +330,7 @@ class Book
         return __DIR__."/../../../../web";
     }
 
-    protected function getUploadRootDir()
+    public function getUploadRootDir()
     {
         return $this->getRootDir().$this->getUploadDir();
     }

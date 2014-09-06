@@ -9,6 +9,7 @@
 /bin/
 /composer.phar
 /php-cs-fixer
+/phpunit.phar
 /web/cache
 /web/upload
 /web/adminer.php
