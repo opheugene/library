@@ -68,18 +68,15 @@ class DefaultController extends Controller
         }
 
         // create form
-        $form = $this->createForm(new BookType(), $book, array(
-            "attr" => array(
-                "has_cover" => strlen($book->getCover()) > 0,
-                "has_file" => strlen($book->getFile()) > 0
-            )
-        ));
+        $form = $this->createForm(new BookType(), $book);
 
         // request
         $form->handleRequest($request);
 
         // check values
         if ($form->isValid()) {
+
+            //$data = $form->getData();
 
             // delete book
             if ($form->get("delete")->getData()) {
@@ -89,13 +86,13 @@ class DefaultController extends Controller
             } else {
 
                 // cover
-                if ($form->get("delete_cover")->getData()) {
+                if ($book->getCover() && $form->get("delete_cover")->getData()) {
                     $book->deleteCover();
                 }
                 $book->uploadCover();
 
                 // file
-                if ($form->get("delete_file")->getData()) {
+                if ($book->getFile() && $form->get("delete_file")->getData()) {
                     $book->deleteFile();
                 }
                 $book->uploadFile();

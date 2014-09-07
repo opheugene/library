@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Book
  *
- * @ORM\Table()
+ * @ORM\Table(name="book")
  * @ORM\Entity(repositoryClass="Opheugene\LibraryBundle\Entity\BookRepository")
  */
 class Book
