@@ -26,10 +26,11 @@ class BookTest extends \PHPUnit_Framework_TestCase
         @imagedestroy($image);
 
         $book->setCover("test/image.jpg");
-        $book->deleteCover();
 
         // check
-        //$this->assertFalse((bool)$book->getCover());
+        $this->assertFileExists($path.$name);
+        $book->deleteCover();
+        $this->assertFalse((bool) $book->getCover());
         $this->assertFileNotExists($path.$name);
     }
 }
