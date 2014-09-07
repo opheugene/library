@@ -40,7 +40,7 @@ class Book
     /**
      * @var string
      *
-     * @ORM\Column(name="cover", type="text")
+     * @ORM\Column(name="cover", type="text", nullable=true)
      */
     private $cover;
 
@@ -52,7 +52,7 @@ class Book
     /**
      * @var string
      *
-     * @ORM\Column(name="file", type="text")
+     * @ORM\Column(name="file", type="text", nullable=true)
      */
     private $file;
 
