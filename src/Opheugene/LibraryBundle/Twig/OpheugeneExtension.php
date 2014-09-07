@@ -2,15 +2,14 @@
 namespace Opheugene\LibraryBundle\Twig;
 
 use Gregwar\Image\Image;
-use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class OpheugeneExtension extends \Twig_Extension
 {
-    private $container;
+    private $rootDir;
 
-    public function __construct(Container $container)
+    public function __construct($rootDir)
     {
-        $this->container = $container;
+        $this->rootDir = $rootDir;
     }
 
     public function getFilters()
@@ -22,11 +21,10 @@ class OpheugeneExtension extends \Twig_Extension
 
     public function showImage($path, $width = 160, $height = null)
     {
-        $documentRoot = $this->container->getParameter("document_root");
-        if (strlen($path) && is_readable($documentRoot . $path)) {
+        if (strlen($path) && is_readable($this->rootDir . $path)) {
 
             // generating preview
-            $src = "/".Image::open($documentRoot . $path)
+            $src = "/".Image::open($this->rootDir . $path)
                 ->cropResize($width, $height)
                 ->jpeg();
 

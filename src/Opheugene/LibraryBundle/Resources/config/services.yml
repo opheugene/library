@@ -1,17 +1,11 @@
 parameters:
     document_root: "%kernel.root_dir%/../web"
-#    Opheugene_library.example.class: Opheugene\LibraryBundle\Example
-
-#services:
-#    Opheugene_library.example:
-#        class: %Opheugene_library.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
 
 services:
     Opheugene.twig.Opheugene_extension:
         class: Opheugene\LibraryBundle\Twig\OpheugeneExtension
-        #arguments: ["%kernel.root_dir%/../web"]
-        arguments: ['@service_container']
+        arguments: ["%kernel.root_dir%/../web"]
+        #arguments: ['@service_container']
         tags:
             - { name: twig.extension }
     my.subscriber:
